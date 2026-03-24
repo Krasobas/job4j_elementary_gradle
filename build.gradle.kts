@@ -17,9 +17,9 @@ repositories {
 }
 
 dependencies {
-    testImplementation(libs.org.junit.jupiter.junit.jupiter.engine)
-    testImplementation(libs.org.junit.vintage.junit.vintage.engine)
-    testImplementation(libs.org.assertj.assertj.core)
+    testImplementation(libs.junit.jupiter)
+    testRuntimeOnly(libs.junit.platform.launcher)
+    testImplementation(libs.assertj.core)
 }
 
 group = "ru.job4j"
@@ -39,4 +39,8 @@ tasks.withType<JavaCompile>() {
 
 tasks.withType<Javadoc>() {
     options.encoding = "UTF-8"
+}
+
+tasks.test {
+    useJUnitPlatform()
 }
